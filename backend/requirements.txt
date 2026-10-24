@@ -1,0 +1,23 @@
+# Aster — real Chrome agent backend
+# Python 3.11+ recommended.
+#
+# Install:
+#   python -m venv .venv
+#   source .venv/bin/activate        # Windows: .venv\Scripts\activate
+#   pip install -r requirements.txt
+#
+# Browser Use drives your installed Chrome through the DevTools protocol, so no
+# Playwright browser download is required. If your browser-use version also
+# needs its patched browser, run: python -m playwright install chromium
+
+browser-use>=0.5.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+
+# LLM SDKs (only the one you use needs to be installed; browser-use ships
+# wrappers for all three). Uncomment the provider you plan to use:
+# openai>=1.40.0
+# google-genai>=1.0.0
+# anthropic>=0.34.0

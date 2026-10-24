@@ -1,0 +1,33 @@
+# Cloudflare Workers configuration for Aster (Next.js App Router via OpenNext)
+#
+# The Next.js app lives in /server (routes + middleware). Build it with the
+# OpenNext Cloudflare adapter, then deploy the generated worker:
+#
+#   npx opennextjs-cloudflare build --config ./wrangler.toml
+#   npx wrangler deploy --config ./wrangler.toml
+#
+# Secrets (never commit real values):
+#   wrangler secret put ADMIN_PASSWORD
+#   wrangler secret put GEMINI_API_KEY
+#   wrangler secret put DATABASE_URL
+
+name = "aster"
+main = ".open-next/worker.js"
+compatibility_date = "2025-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+# Custom domain readiness — uncomment and set your zone/route.
+# routes = [
+#   { pattern = "app.aster.ai/*", zone_name = "aster.ai" }
+# ]
+
+[vars]
+NODE_ENV = "production"
+MODEL_PROVIDER = "gemini"

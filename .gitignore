@@ -1,0 +1,9 @@
+
+# Aster — backend secrets & envs
+backend/.env
+backend/.venv/
+backend/__pycache__/
+*.pyc
+.env
+.env.local
+.dev.vars
